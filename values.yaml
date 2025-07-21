@@ -1,0 +1,25 @@
+config:
+  clientID: "your-google-client-id"
+  clientSecret: "your-google-client-secret"
+  cookieSecret: "your-generated-cookie-secret"
+  redirectUrl: "https://login.markcallen.com/oauth2/callback"
+  configFile: |
+    email_domains = [ "markcallen.com" ]
+    upstreams = [ "file:///dev/null" ]
+    cookie_secure = "true"
+    cookie_domains = [ ".markcallen.com" ]
+    whitelist_domains = [ ".markcallen.com" ]
+    provider = "google"
+    scope = "openid email profile"
+ingress:
+  enabled: true
+  className: nginx
+  hosts:
+    - login.markcallen.com
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-dns
+    external-dns.alpha.kubernetes.io/hostname: login.markcallen.com
+  tls:
+    - hosts:
+        - login.markcallen.com
+      secretName: login-markcallen-tls
