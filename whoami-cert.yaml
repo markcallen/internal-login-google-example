@@ -1,0 +1,13 @@
+# whoami-cert.yaml
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: example-cert
+  namespace: default
+spec:
+  secretName: whoami-markcallen-tls
+  issuerRef:
+    name: letsencrypt-dns
+    kind: ClusterIssuer
+  dnsNames:
+  - whoami.markcallen.com
