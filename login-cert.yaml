@@ -10,4 +10,4 @@ spec:
     name: letsencrypt-dns
     kind: ClusterIssuer
   dnsNames:
-  - login.markcallen.com
+    - login.markcallen.dev

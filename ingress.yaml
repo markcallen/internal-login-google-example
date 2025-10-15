@@ -6,14 +6,14 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-dns
     nginx.ingress.kubernetes.io/auth-url: "http://oauth2-proxy.oauth2.svc.cluster.local/oauth2/auth"
-    nginx.ingress.kubernetes.io/auth-signin: "https://login.markcallen.com/oauth2/start?rd=https://$host$escaped_request_uri"
+    nginx.ingress.kubernetes.io/auth-signin: "https://login.markcallen.dev/oauth2/start?rd=https://$host$escaped_request_uri"
     nginx.ingress.kubernetes.io/auth-response-headers: "X-Forwarded-User"
     nginx.ingress.kubernetes.io/ssl-redirect: "true"
-    external-dns.alpha.kubernetes.io/hostname: whoami.markcallen.com
+    external-dns.alpha.kubernetes.io/hostname: whoami.markcallen.dev
 spec:
   ingressClassName: nginx
   rules:
-    - host: whoami.markcallen.com
+    - host: whoami.markcallen.dev
       http:
         paths:
           - path: /
@@ -25,5 +25,5 @@ spec:
                   number: 80
   tls:
     - hosts:
-        - whoami.markcallen.com
+        - whoami.markcallen.dev
       secretName: whoami-markcallen-tls
